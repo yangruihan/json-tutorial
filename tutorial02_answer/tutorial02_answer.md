@@ -64,7 +64,7 @@ int exp = 0;
 v->n = (negative ? -mantissa : mantissa) * pow(10.0, exp);
 ~~~
 
-这种做法会有精度问题。实现正确的答案是很复杂的，RapidJSON 的初期版本也是 naive 的，后来 RapidJSON 就内部实现了三种算法（使用 `kParseFullPrecision` 选项开启），最后一种算法用到了大整数（高精度计算）。有兴趣的同学也可以先尝试做一个 naive 版本，不使用 `strtod()`。之后可再参考 Google 的 [https://github.com/google/double-conversion](double-conversion) 开源项目及相关论文。
+这种做法会有精度问题。实现正确的答案是很复杂的，RapidJSON 的初期版本也是 naive 的，后来 RapidJSON 就内部实现了三种算法（使用 `kParseFullPrecision` 选项开启），最后一种算法用到了大整数（高精度计算）。有兴趣的同学也可以先尝试做一个 naive 版本，不使用 `strtod()`。之后可再参考 Google 的 [double-conversion](https://github.com/google/double-conversion) 开源项目及相关论文。
 
 ## 3. 校验数字
 
@@ -132,7 +132,7 @@ exp = ("e" / "E") ["-" / "+"] 1*digit
     }
 ~~~
 
-这里用了 18 行代码去做这个校验。当中把一些 if 用一行来排版，而没用采用传统两行缩进风格，我个人认为在不影响阅读时可以这样弹性处理。当然也可分拆成三行：
+这里用了 18 行代码去做这个校验。当中把一些 if 用一行来排版，而没用采用传统两行缩进风格，我个人认为在不影响阅读时可以这样弹性处理。当然那些 for 也可分拆成三行：
 
 ~~~c
         p++;
